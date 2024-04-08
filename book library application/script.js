@@ -88,13 +88,7 @@ function display_books(){
 
 function search_books(){
     let search = prompt("Enter the title of the book you want to search: ");
-    const match = books.filter(checkBook);
-    
-    function checkBook(book){
-        if(book.title == search){
-            return books;
-        }
-    }
+    const match = books.filter( (book) => { return book.title.includes(search);});
     console.log(match);
 }
 
@@ -134,14 +128,27 @@ function sort_books(){
 
 function add_books(){
     let id = Number(prompt("Enter the book ID: "));
-    let title = prompt("Enter the title of the book (in snake case, eg. book_title)");
-    let author = prompt("Enter the author of the book (in snake case, eg. book_author)");
-    let pages = Number(prompt("Enter the number of pages in the book"));
-    let isRead = Boolean(prompt("Enter whether the book is read or not? (true/false)"));
+    let check = books.find(checkid);
+    function checkid(value){
+        if(value.book_id == id){
+            console.log("A book with this book id already exists.");
+            return id;
+        }
+    }
+    if(check){
+        console.log(check);
+        return;
+    }else{
+        let title = prompt("Enter the title of the book (in snake case, eg. book_title)");
+        let author = prompt("Enter the author of the book (in snake case, eg. book_author)");
+        let pages = Number(prompt("Enter the number of pages in the book"));
+        let isRead = Boolean(prompt("Enter whether the book is read or not? (true/false)"));
 
-    books.push({book_id: id, title: title, author: author, pages: pages, isRead: isRead});
-    console.log("The books array after adding the book is: \n");
-    console.log(books);
+        books.push({book_id: id, title: title, author: author, pages: pages, isRead: isRead});
+        console.log("The books array after adding the book is: \n");
+        console.log(books);
+    }
+    
 }
 
 function remove_books(){
