@@ -88,6 +88,9 @@ function display_books(){
 
 function search_books(){
     let search = prompt("Enter the title of the book you want to search: ");
+    search_book(search);
+}
+function search_book(search){
     const match = books.filter( (book) => { return book.title.includes(search);});
     console.log(match);
 }
@@ -108,6 +111,9 @@ function number_of_pages(){
 
 function mark_book(){
     let book = prompt("Enter the book id of the book that you wanna mark read/unread: ");
+    mark(book);
+}
+function mark(book){
     let findbook = books.find(readbook);
     function readbook(value){
         if(value.book_id == book){
@@ -145,7 +151,6 @@ function add_books(){
         let pages = Number(prompt("Enter the number of pages in the book"));
         while(isNaN(pages)){pages = Number(prompt("Enter the number of pages again: (Please enter a number only): "));}
         let isRead = prompt("Enter whether the book is read or not? (true/false)");
-        
         if(isRead == "false" || isRead == 0){
             isRead = false;
         }
