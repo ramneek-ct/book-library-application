@@ -163,5 +163,5 @@ function remove_books(){
     }
     books = filterBook;
     console.log("The books array after removing the book is: \n");
-    console.log(filterBook);
+    console.log(books);
 }
