@@ -1,4 +1,4 @@
-const books = [ {
+let books = [ {
     book_id: 1,
     title: "the_secret",
     author: "rhonda_byrne",
@@ -161,6 +161,7 @@ function remove_books(){
                 return id;
         }
     }
+    books = filterBook;
     console.log("The books array after removing the book is: \n");
     console.log(filterBook);
 }
