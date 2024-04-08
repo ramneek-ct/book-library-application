@@ -144,8 +144,14 @@ function add_books(){
         let author = prompt("Enter the author of the book (in snake case, eg. book_author)");
         let pages = Number(prompt("Enter the number of pages in the book"));
         while(isNaN(pages)){pages = Number(prompt("Enter the number of pages again: (Please enter a number only): "));}
-        let isRead = Boolean(prompt("Enter whether the book is read or not? (true/false)"));
-
+        let isRead = prompt("Enter whether the book is read or not? (true/false)");
+        
+        if(isRead == "false" || isRead == 0){
+            isRead = false;
+        }
+        else{
+            isRead = true;
+        }
         books.push({book_id: id, title: title, author: author, pages: pages, isRead: isRead});
         console.log("The books array after adding the book is: \n");
         console.log(books);
